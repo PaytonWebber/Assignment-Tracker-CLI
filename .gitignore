@@ -1,0 +1,8 @@
+# Ignore .csv files and env folder
+
+*.csv
+env/
+
+# Ignore .pyc files
+
+*.pyc
