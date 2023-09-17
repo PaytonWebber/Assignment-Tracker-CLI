@@ -9,6 +9,9 @@ __pycache__/
 # CSV files
 *.csv
 
+# Ignore .ini files
+*.ini
+
 # Distribution / packaging
 .Python
 build/
