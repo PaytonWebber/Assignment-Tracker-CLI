@@ -14,10 +14,8 @@ def check_format(rows: list):
 
     if len(rows) == 0:
         raise ValueError("Error: CSV file is empty. Please check the README for more information.\n")
-
     return
         
-
 
 def check_csv(csv_path: str):
     """ Checks if the CSV file exists. If it doesn't, it creates it and adds the headers."""
@@ -78,6 +76,7 @@ def update_config(due_soon: dict, config_path: str):
     with open(config_path, 'w') as f:
         config.write(f)
 
+        
 def get_assignments_due_soon(csv_path: str, days_notice: int) -> dict:
     #  Parse csv file
     assignments_due_soon = {}
