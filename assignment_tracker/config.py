@@ -2,10 +2,13 @@
 
 import configparser
 from rich.prompt import Prompt
+import pkg_resources
+
+config_path = pkg_resources.resource_filename('your_package_name', 'config.ini')
 
 # Load the configuration from config.ini
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read(config_path)
 
 try:
     CSV_FILE = config['General']['CSV_FILE']
