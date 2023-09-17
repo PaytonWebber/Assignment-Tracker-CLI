@@ -21,6 +21,12 @@ console = Console()
 
 
 @app.command()
+def add_csv_path(csv_path: str):
+    """ Adds a CSV path to the config file. """
+    utils.add_csv_path_to_config(csv_path)
+
+
+@app.command()
 def due_soon():
     utils.check_csv(CSV_FILE)
     assignemtns_due_soon = utils.get_assignments_due_soon(CSV_FILE, DAYS_NOTICE)

@@ -9,6 +9,16 @@ from assignment_tracker import config
 CLASS_LIST = [class_name for class_name in config.CLASSES]
 
 
+def add_csv_path_to_config(csv_path: str):
+    """ Adds a CSV path to the config file. """
+
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    config['General']['CSV_FILE'] = csv_path
+    with open('config.ini', 'w') as f:
+        config.write(f)
+
+
 def check_format(rows: list):
     """ Checks if the CSV file has the correct format. If it doesn't, it raises an error."""
 
@@ -76,7 +86,7 @@ def update_config(due_soon: dict, config_path: str):
     with open(config_path, 'w') as f:
         config.write(f)
 
-        
+
 def get_assignments_due_soon(csv_path: str, days_notice: int) -> dict:
     #  Parse csv file
     assignments_due_soon = {}
