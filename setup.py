@@ -15,6 +15,9 @@ setup(
         "Operating System :: OS Independent",
     ],
     packages=find_packages(),
+        package_data={
+        '': ['config.ini'],
+    },
     install_requires=[
         "rich==13.5.2",
         "typer==0.9.0",

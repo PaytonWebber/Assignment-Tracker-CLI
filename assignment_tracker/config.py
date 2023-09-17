@@ -10,7 +10,7 @@ config.read('config.ini')
 try:
     CSV_FILE = config['General']['CSV_FILE']
 except KeyError:
-    CSV_FILE = Prompt.ask('[bold blue]Please enter the path to your CSV file.[/bold blue]')
+    CSV_FILE = Prompt.ask('[bold blue]Please enter the path to your CSV file[/bold blue]')
     config['General']['CSV_FILE'] = CSV_FILE
     with open('config.ini', 'w') as f:
         config.write(f)
@@ -18,7 +18,7 @@ except KeyError:
 try:
     DAYS_NOTICE = int(config['General']['DAYS_NOTICE'])
 except KeyError:
-    DAYS_NOTICE = Prompt.ask('[bold blue]Please enter the number of days notice you would like to receive.[/bold blue]')
+    DAYS_NOTICE = Prompt.ask('[bold blue]Please enter the number of days notice you would like to receive[/bold blue]')
     config['General']['DAYS_NOTICE'] = str(DAYS_NOTICE)
     with open('config.ini', 'w') as f:
         config.write(f)
