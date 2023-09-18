@@ -16,6 +16,23 @@ ASSIGNMENT_LIST = {class_name: [assignment for class_n, assignment in config.ASS
 STATUS_LIST = ['NOT STARTED', 'IN PROGRESS', 'COMPLETED']
 
 
+def complete_class(incomplete: str):
+    completion = []
+    for course in CLASS_LIST:
+        if incomplete in course:
+            completion.append(course)
+    return completion
+
+
+def complete_assignment(incomplete: str):
+    completion = []
+    for assignment in ASSIGNMENT_LIST.values():
+        for a in assignment:
+            if incomplete in a:
+                completion.append(a)
+    return completion
+
+
 app = typer.Typer()
 console = Console()
 
@@ -39,7 +56,7 @@ def due_soon():
 @app.command()
 def update_status():
     due_soon()
-
+    
     class_name = Prompt.ask('[bold blue]Which class is the assignment for?[/bold blue]', choices=CLASS_LIST)
     assignment_name = Prompt.ask('[bold blue]Which assignment would you like to update?[/bold blue]', choices=ASSIGNMENT_LIST[class_name])
     status = Prompt.ask('[bold blue]What is the new status?[/bold blue]', choices=STATUS_LIST)

@@ -29,10 +29,13 @@ except KeyError:
 try:
     DAYS_NOTICE = int(config['Notice']['days_notice'])
 except KeyError:
-    DAYS_NOTICE = Prompt.ask('[bold blue]Please enter the number of days notice you would like to receive[/bold blue]')
-    config['Notice']['days_notice'] = str(DAYS_NOTICE)
-    with open(config_path, 'w') as f:
-        config.write(f)
+    # Check if the Notice section exists
+    if not config.has_section('Notice'):
+        config.add_section('Notice')
+        DAYS_NOTICE = Prompt.ask('[bold blue]Please enter the number of days notice you would like to receive[/bold blue]')
+        config['Notice']['days_notice'] = str(DAYS_NOTICE)
+        with open(config_path, 'w') as f:
+            config.write(f)
     DAYS_NOTICE = int(config['Notice']['days_notice'])
 
 try:
