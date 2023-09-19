@@ -16,7 +16,7 @@ setup(
     ],
     packages=find_packages(),
         package_data={
-        '': ['config.ini'],
+        '': ['assignment_tracker_config.ini'],
     },
     install_requires=[
         "rich==13.5.2",

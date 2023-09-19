@@ -5,8 +5,7 @@ from rich import print
 from rich.prompt import Prompt
 import pkg_resources
 
-#config_path = pkg_resources.resource_filename('assignment_tracker', 'config.ini')
-config_path = 'config.ini'
+config_path = pkg_resources.resource_filename('assignment_tracker', 'assignment_tracker_config.ini')
 
 # Load the configuration from config.ini
 config = configparser.ConfigParser()
