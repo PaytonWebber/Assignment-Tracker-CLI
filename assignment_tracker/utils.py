@@ -90,7 +90,7 @@ def update_config(due_soon: dict, config_path: str):
 
 
 def get_assignments_due_soon(csv_path: str, days_notice: int) -> dict:
-    #  Parse csv file
+    """ Returns a dictionary of assignments due soon. """
     assignments_due_soon = {}
 
     with open(csv_path, 'r') as f:
@@ -118,6 +118,7 @@ def get_assignments_due_soon(csv_path: str, days_notice: int) -> dict:
 
 
 def update_status_value(csv_path: str, class_name: str, assignment_name: str, status: str):
+    """ Updates the status value of an assignment in the CSV file. """
     rows = []
     with open(csv_path, 'r') as f:
         reader = csv.reader(f)
@@ -132,12 +133,14 @@ def update_status_value(csv_path: str, class_name: str, assignment_name: str, st
 
 
 def add_assignment_to_csv(csv_path: str, class_name: str, assignment_name: str, due_date: datetime.date):
+    """ Adds an assignment to the CSV file. """
     with open(csv_path, 'a') as f:
         writer = csv.writer(f)
         writer.writerow([assignment_name, class_name, due_date, 'NOT STARTED'])
 
 
 def remove_assignment_from_csv(csv_path: str, class_name: str, assignment_name: str):
+    """ Removes an assignment from the CSV file. """
     with open(csv_path, 'r') as f:
         reader = csv.reader(f)
         data = list(reader)

@@ -38,13 +38,14 @@ console = Console()
 
 
 @app.command()
-def add_csv_path(csv_path: str):
-    """ Adds a CSV path to the config file. """
+def update_csv_path(csv_path: str):
+    """ update the CSV path in the config file. """
     utils.add_csv_path_to_config(csv_path)
 
 
 @app.command()
 def due_soon():
+    """ Display assignments due soon. """
     utils.check_csv(CSV_FILE)
     assignemtns_due_soon = utils.get_assignments_due_soon(CSV_FILE, DAYS_NOTICE)
     table = Table('Assignment', 'Class', 'Due Date', 'Days Left', 'Status', header_style='bold blue', row_styles=['yellow'])
@@ -55,6 +56,7 @@ def due_soon():
 
 @app.command()
 def update_status():
+    """ Update the status an assignment, and save the changes to the CSV file. """
     due_soon()
     
     class_name = Prompt.ask('[bold blue]Which class is the assignment for?[/bold blue]', choices=CLASS_LIST)
@@ -69,6 +71,7 @@ def update_status():
 
 @app.command()
 def add_assignment():
+    """ Add an assignment to the CSV file. """
     due_soon()
     class_name = Prompt.ask('[bold blue]Which class is the assignment for?[/bold blue]', choices=CLASS_LIST)
     assignment_name = Prompt.ask('[bold blue]What is the name of the assignment?[/bold blue]')
@@ -83,6 +86,7 @@ def add_assignment():
 
 @app.command()
 def remove_assignment():
+    """ Remove an assignment from the CSV file. """
     due_soon()
     class_name = Prompt.ask('[bold blue]Which class is the assignment for?[/bold blue]', choices=CLASS_LIST)
     assignment_name = Prompt.ask('[bold blue]Which assignment would you like to remove?[/bold blue]', choices=ASSIGNMENT_LIST[class_name])
